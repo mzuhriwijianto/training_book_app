@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-header">Management Category</div>
+                <div class="card-header">Category</div>
                 <div class="card-body">
                     <div class="row">
                             <div class="col-4 col-md-3 col-lg-2">
@@ -18,12 +18,12 @@
                     </div>
                     @endif
                     <table class="table caption-top">
-                        <caption>List of category</caption>
+                        <caption>List  categoasdsadry</caption>
                         <thead class="table-dark">
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Slug</th>
+                                <th scope="col">Sludsadadg</th>
                                 <th scope="col">Created At</th>
                                 <th scope="col">Updated At</th>
                                 <th scope="col-md-6">Action</th>
@@ -38,7 +38,7 @@
                                 <td>{{$category->created_at_with_format}}</td>
                                 <td>{{$category->updated_at_with_format}}</td>
                                 <td class="center">
-                                    <a href="{{route('category.edit', ['id' => $category->id])}}" class="btn btn-primary">Edit</a>
+                                    <a href="{{route('category.edit', ['id' => $category->id])}}" class="btn btn-warning">Edit</a>
                                     @component('components.delete')
                                     @slot('url')
                                         {{ route('category.delete', ['id' => $category->id]) }}
