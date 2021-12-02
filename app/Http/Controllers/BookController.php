@@ -53,6 +53,8 @@ class BookController extends Controller
         $book->save();
 
         return redirect()->route('book.index')->with('status', 'buku berhasil ditambahkan');
+
+        //dari hasil kodinganku salah
     }
 
     /**
