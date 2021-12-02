@@ -23,7 +23,7 @@
                             <tr>
                                 <th scope="col">No</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Slug</th>
+                                <th scope="col">Sludsadadg</th>
                                 <th scope="col">Created At</th>
                                 <th scope="col">Updated At</th>
                                 <th scope="col-md-6">Action</th>
