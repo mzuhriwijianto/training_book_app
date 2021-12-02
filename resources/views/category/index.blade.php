@@ -18,7 +18,7 @@
                     </div>
                     @endif
                     <table class="table caption-top">
-                        <caption>List of category</caption>
+                        <caption>List  category</caption>
                         <thead class="table-dark">
                             <tr>
                                 <th scope="col">No</th>
