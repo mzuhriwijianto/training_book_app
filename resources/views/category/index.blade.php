@@ -18,7 +18,7 @@
                     </div>
                     @endif
                     <table class="table caption-top">
-                        <caption>List  category</caption>
+                        <caption>List  categoasdsadry</caption>
                         <thead class="table-dark">
                             <tr>
                                 <th scope="col">No</th>
@@ -38,11 +38,7 @@
                                 <td>{{$category->created_at_with_format}}</td>
                                 <td>{{$category->updated_at_with_format}}</td>
                                 <td class="center">
-<<<<<<< HEAD
                                     <a href="{{route('category.edit', ['id' => $category->id])}}" class="btn btn-warning">Edit</a>
-=======
-                                    <a href="{{route('category.edit', ['id' => $category->id])}}" class="btn btn-light">Edit</a>
->>>>>>> 0104950925a1fe5154b90b561ec153f357d91bd2
                                     @component('components.delete')
                                     @slot('url')
                                         {{ route('category.delete', ['id' => $category->id]) }}
