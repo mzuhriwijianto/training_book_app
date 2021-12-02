@@ -63,7 +63,22 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        $request->validate([
+            'judul' => 'required|min:4',
+            'tahun' => 'required|numeric',
+            'cover' => 'mimes:png,jpg|max:10000',
+        ]);
+
+        $book = new book();
+        $book->judul = $request->judul;
+        $book->tahun = $request->tahun;
+        if ($request->file('cover')) {
+            $imagepath = $request->file('cover')->store('book_cover', 'public');
+            $book->cover = $imagepath;
+        }
+        $book->save();
+
+        return redirect()->route('book.index')->with('status', 'buku berhasil ditambahkan');
     }
 
     /**
