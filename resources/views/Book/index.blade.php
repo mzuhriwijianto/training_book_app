@@ -40,7 +40,7 @@
                                 <td>
 
                                     @if ($book->cover)
-                                        <img src="{{ asset('storage/'.$book->cover) }}" alt="Book Cover" width="300px">
+                                        <img src="{{ asset('storage/'.$book->cover) }}" alt="Book Cover" width="100px">
                                     @else
                                         <span class="badge bg-danger">Cover belum diupload</span>
                                     @endif
@@ -49,11 +49,11 @@
                                 <td>
                                     @forelse ($book->categories as $category)
 
-                                    <li style="list-style-type:square">{{ $category->name }}</li>
+                                    <li>{{ $category->name }}</li>
 
                                     @empty
 
-                                    <li style="list-style-type:square">Buku tidak memiliki kategori</li>
+                                    <li>Buku tidak memiliki kategori</li>
 
                                     @endforelse
                                 </td>

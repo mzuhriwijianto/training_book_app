@@ -13,17 +13,23 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::view('test-login', 'auth.login-new');
 
-Route::prefix('category')->group(function () {
-    Route::get('/', [App\Http\Controllers\CategoryController::class, 'index'])->name('category.index');
-    Route::get('/create', [App\Http\Controllers\CategoryController::class, 'create'])->name('category.create');
-    //Untuk menambahkan/menginsert data
-    Route::post('/store', [App\Http\Controllers\CategoryController::class, 'store'])->name('category.store');
-    Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
-    Route::put('/{id}', [App\Http\Controllers\CategoryController::class, 'update'])->name('category.update');
-    Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
-    Route::get('/all', [CategoryController::class, 'getAllCategory'])->name('category.all');
+Route::middleware('auth')->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::prefix('category')->group(function () {
+        Route::get('/', [CategoryController::class, 'index'])->name('category.index');
+        Route::get('/create', [CategoryController::class, 'create'])->name('category.create');
+        // Untuk insert data menggunakan post
+        Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
+        Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+        // Untuk update data menggunakan put atau patch
+        Route::put('/{id}', [CategoryController::class, 'update'])->name('category.update');
+        // Untuk hapus data menggunakan delete
+        Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
+        Route::get('/all', [CategoryController::class, 'getAllCategory'])->name('category.all');
+    });
+
+    Route::resource('book', BookController::class);
 });
-
-Route::resource('book', BookController::class);

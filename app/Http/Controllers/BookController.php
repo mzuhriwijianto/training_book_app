@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
@@ -79,7 +80,9 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('book.edit', [
+            'book' => $book
+        ]);
     }
 
     /**
@@ -91,7 +94,30 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $request->validate([
+            'judul' => 'required|min:4',
+            'tahun' => 'required|numeric',
+            'cover' => 'mimes:png,jpg|max:10000',
+        ]);
+
+        $book = new book();
+        $book->judul = $request->judul;
+        $book->tahun = $request->tahun;
+        if ($file) {
+            if ($book->cover) {
+                Storage::delete('public/' . $book->cover);
+            }
+            $imagePath = $file->storeAs('book_cover', $file->getClientOriginalName(), 'public');
+            $book->cover = $imagePath;
+        }
+        $book->save();
+
+        $book->categories()->detach();
+        $book->categories()->attach($request->category);
+
+        $book->categories()->sync($request->category);
+
+        return redirect()->route('book.index')->with('status', 'buku berhasil ditambahkan');
     }
 
     /**
@@ -102,6 +128,13 @@ class BookController extends Controller
      */
     public function destroy(Book $book)
     {
-        //
+        $book->categories()->detach();
+        if ($book->cover) {
+            Storage::delete('public/' . $book->cover);
+        }
+
+        $book->delete();
+
+        return redirect()->route('book.index')->with('status', 'Data berhasil dihapus');
     }
 }

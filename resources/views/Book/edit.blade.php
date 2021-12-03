@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-header"> Add Book </div>
+                <div class="card-header"> Edit Book </div>
                     <div class="card-body">
                         @if ($errors->any())
                         <div class="alert alert-danger">
@@ -26,33 +26,37 @@
                             <div class="form-group row mb-2">
                                 <label for="judul" class="col-sm-2 col-form-label">Judul</label>
                                 <div class="col-sm-10">
-                                    <input id="judul" name="judul" type="text" class="form-control" placeholder="Masukkan Nama Judul">
+                                    <input id="judul" name="judul" type="text" class="form-control" placeholder="Masukkan Nama Judul" value="{{ old('judul') }}">
                                 </div>
                             </div>
                             <div class="form-group row mb-2">
                                 <label for="tahun" class="col-sm-2 col-form-label">Tahun</label>
                                 <div class="col-sm-10">
-                                    <input id="tahun" name="tahun" type="text" class="form-control" placeholder="Masukkan Tahun">
+                                    <input id="tahun" name="tahun" type="text" class="form-control" placeholder="Masukkan Tahun" value="{{ old('tahun') }}">
                                 </div>
                             </div>
+                            {{-- coding belum selesai --}}
                             <div class="form-group row mb-2">
                                 <label for="cover" class="col-sm-2 col-form-label">Cover</label>
                                 <div class="col-sm-10">
-                                    <input id="cover" name="cover" type="file" class="form-control" placeholder="Upload Cover Buku">
+                                    <small class="text-muted">Current Cover</small>
+                                    @if ($book->cover)
+                                    <img src="{{asset('storage/'. $book->cover)}}" width="100px"></small><br>
+                                    @endif
+                                    <input id="cover" name="cover" type="file" class="form-control">
+                                    <small class="text-muted">*Kosongkan jika tidak ingin mengubah cover</small>
                                 </div>
                             </div>
+                            {{-- coding belum selesai --}}
                             <div class="form-group row mb-2">
                                 <label for="cover" class="col-sm-2 col-form-label">Category</label>
                                 <div class="col-sm-10">
                                     <select id="category" name="category[]" type="file" multiple class="form-control">
-                                        {{-- @foreach ($category as $cat)
-                                            @foreach (old('category') ?? [] as $oldId)
-                                                @if ($cat->id == $oldId)
-                                                    <option value="{{ $cat->id }}" selected>{{ $cat->name }}</option>
-                                                @endif
-                                            @endforeach
-                                        @endforeach --}}
+                                    @forelse ($book->categories as $category)
+                                        <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                    @empty
                                         <option></option>
+                                    @endforelse
                                     </select>
                                 </div>
                             </div>
