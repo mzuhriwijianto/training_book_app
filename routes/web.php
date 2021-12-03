@@ -23,6 +23,7 @@ Route::prefix('category')->group(function () {
     Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
     Route::put('/{id}', [App\Http\Controllers\CategoryController::class, 'update'])->name('category.update');
     Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
+    Route::get('/all', [CategoryController::class, 'getAllCategory'])->name('category.all');
 });
 
 Route::resource('book', BookController::class);

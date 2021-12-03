@@ -88,4 +88,9 @@ class CategoryController extends Controller
         return redirect()->route('category.index')
             ->with('status', 'Category ' . $namaCategory . ' berhasil dihapus');
     }
+
+    public function getAllCategory()
+    {
+        return Category::all();
+    }
 }
