@@ -26,6 +26,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Cover</th>
                             <th scope="col">Tahun</th>
+                            <th scope="col">Category</th>
                             <th scope="col">Created At</th>
                             <th scope="col">Updated At</th>
                             <th scope="col" class="text-center">Action</th>
@@ -45,6 +46,17 @@
                                     @endif
                                 </td>
                                 <td>{{$book->tahun}}</td>
+                                <td>
+                                    @forelse ($book->categories as $category)
+
+                                    <li style="list-style-type:square">{{ $category->name }}</li>
+
+                                    @empty
+
+                                    <li style="list-style-type:square">Buku tidak memiliki kategori</li>
+
+                                    @endforelse
+                                </td>
                                 <td>{{$book->created_at}}</td>
                                 <td>{{$book->updated_at}}</td>
                                 <td class="text-center">
