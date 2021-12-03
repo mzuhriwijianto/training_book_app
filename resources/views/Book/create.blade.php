@@ -45,13 +45,13 @@
                                 <label for="cover" class="col-sm-2 col-form-label">Category</label>
                                 <div class="col-sm-10">
                                     <select id="category" name="category[]" type="file" multiple class="form-control">
-                                        {{-- @foreach ($category as $cat)
+                                        @foreach ($category as $cat)
                                             @foreach (old('category') ?? [] as $oldId)
                                                 @if ($cat->id == $oldId)
                                                     <option value="{{ $cat->id }}" selected>{{ $cat->name }}</option>
                                                 @endif
                                             @endforeach
-                                        @endforeach --}}
+                                        @endforeach
                                         <option></option>
                                     </select>
                                 </div>

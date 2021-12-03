@@ -38,7 +38,6 @@
                                 <th scope="row">{{ $books->firstItem() + $key}}</th>
                                 <td>{{$book->judul}}</td>
                                 <td>
-
                                     @if ($book->cover)
                                         <img src="{{ asset('storage/'.$book->cover) }}" alt="Book Cover" width="100px">
                                     @else
