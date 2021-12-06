@@ -17,7 +17,7 @@
                         {{session('status')}}
                     </div>
                     @endif
-                    <table class="table caption-top">
+                    <table class="table table-striped">
                         <caption>List Category</caption>
                         <thead class="table-dark">
                             <tr>
